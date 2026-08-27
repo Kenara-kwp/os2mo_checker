@@ -1,0 +1,31 @@
+# queries.graphql
+
+# SPDX-FileCopyrightText: Magenta ApS <https://magenta.dk>
+# SPDX-License-Identifier: MPL-2.0
+
+query Version {
+    version {
+        mo_version
+        mo_hash
+    }
+}
+
+query getAddressUuuid($filter: AddressFilter!) {
+  addresses(filter: $filter) {
+    objects {
+      current {
+        uuid
+        ituser_response {
+          current {
+            user_key
+            uuid
+            validity {
+              from
+              to
+            }
+          }
+        }
+      }
+    }
+  }
+}
